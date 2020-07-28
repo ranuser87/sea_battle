@@ -1,0 +1,59 @@
+/*
+	Common
+*/
+.game__title,
+.game__description {
+	text-align: center;
+}
+
+/*
+	Field
+*/
+.game__field {
+	margin: auto;
+	border-collapse: collapse;
+	transition: opacity 0.3s;
+}
+
+.game__field_disabled {
+    opacity: 0.3;
+}
+
+.game__field:not(.game__field_disabled) .game__point[data-status="untouched"] {
+	cursor: pointer;
+}
+
+/*
+	Point
+*/
+.game__point {
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+	transition: opacity 0.3s;
+}
+
+.game__point[data-status="holey"] {
+	background: url("images/dot.svg") center center / 40% 40% no-repeat;
+}
+
+_:-ms-fullscreen, 
+:root .game__point[data-status="holey"] { 
+	background-size: 50% 50%;
+}
+
+.game__point[data-status="dead"] {
+	opacity: 0.3;
+}
+
+.game__point[data-status="damaged"],
+.game__point[data-status="dead"],
+.game__field_uncovered .game__point[data-ship-type][data-status="damaged"],
+.game__field_uncovered .game__point[data-ship-type][data-status="dead"] {
+	background: url("images/ship.svg") center center / 70% 70% no-repeat,
+				url("images/close.svg") center center / 90% 90% no-repeat;	
+}
+
+.game__field_uncovered .game__point[data-ship-type] {
+	background: url("images/ship.svg") center center / 70% 70% no-repeat;
+}
